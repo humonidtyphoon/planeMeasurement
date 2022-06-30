@@ -35,11 +35,12 @@ public class PlaneAreaManager : MonoBehaviour
                     Ray raycast = Camera.main.ScreenPointToRay(touch.position);
                         if (Physics.Raycast(raycast, out RaycastHit raycastHit)) {
                                 var planeAreaBehaviour = raycastHit.collider.gameObject.GetComponent<PlaneAreaBehaviour>();
+
                                 if (planeAreaBehaviour != null)
                                 {
+                                    planeAreaBehaviour.setText();
                                     // planeAreaBehaviours.append (planeAreaBehaviour);
-                                    // planeAreaBehaviour.setText();
-                                    planeAreaBehaviour.ToggleAreaView();
+                                    // planeAreaBehaviour.ToggleAreaView();
                                 }
                         }
 

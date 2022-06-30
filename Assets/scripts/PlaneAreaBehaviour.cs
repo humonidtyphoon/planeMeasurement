@@ -11,9 +11,9 @@ public class PlaneAreaBehaviour : MonoBehaviour
 {
     
     public ARPlane arPlane;
-    public  float area ;
-    public TextMeshPro BucketNumberMeshPro;
-    // public TextMeshPro textField;
+    public   float area ;
+    public Text txt;
+     public TextMeshPro BucketNumberMeshPro;
     // Start is called before the first frame update
     void Update()
     {
@@ -33,9 +33,9 @@ public class PlaneAreaBehaviour : MonoBehaviour
 
     public void setText()
     {
-        //  textField.text = "IT WILL WORK";
-        
-
+        float area = CalculatePlaneArea(arPlane);
+          
+        txt.text = area.ToString();
     }
 
     private void ArPlane_BoundaryChanged(ARPlaneBoundaryChangedEventArgs obj)
@@ -44,7 +44,8 @@ public class PlaneAreaBehaviour : MonoBehaviour
         area = CalculatePlaneArea(arPlane);
         
         BucketNumberMeshPro.text = area.ToString();
-        // textField.text = area.ToString();  
+         txt.text = area.ToString();
+        
     }
     // Update is called once per frame
     
