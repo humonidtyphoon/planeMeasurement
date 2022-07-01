@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.XR.ARFoundation;
+using UnityEngine.UI;
 
 
 public class PlaneAreaManager : MonoBehaviour
@@ -15,22 +16,26 @@ public class PlaneAreaManager : MonoBehaviour
     
 
     }
-
-    // List<PlaneAreaBehaviour> planeAreaBehaviours = new List<PlaneAreaBehaviour>();
+    public Text txt;
+    List<PlaneAreaBehaviour> planeAreaBehaviours = new List<PlaneAreaBehaviour>();
     // Update is called once per frame
+    public void setEstimation(){
+        float totalArea = 0;
+        foreach( var plane in planeAreaBehaviours ) {
+        totalArea  += plane.area;
+        }
+
+        txt.text = totalArea.ToString();
+        
+    }
     void Update()
     {
-        // float totalArea = 0;
-        // foreach( var plane in planeAreaBehaviours ) {
-        // totalArea  = plane.size.x * plane.size.y;
-        // }
-
         if (Input.touchCount > 0)
         {
             var touch = Input.GetTouch(0);
             if (touch.phase == TouchPhase.Ended)
-            {                
-                if (Input.touchCount == 1)  
+            {
+                if (Input.touchCount == 1)
                 {
                     Ray raycast = Camera.main.ScreenPointToRay(touch.position);
                         if (Physics.Raycast(raycast, out RaycastHit raycastHit)) {
@@ -38,9 +43,8 @@ public class PlaneAreaManager : MonoBehaviour
 
                                 if (planeAreaBehaviour != null)
                                 {
-                                    planeAreaBehaviour.setText();
-                                    // planeAreaBehaviours.append (planeAreaBehaviour);
-                                    // planeAreaBehaviour.ToggleAreaView();
+                                     planeAreaBehaviours.Add(planeAreaBehaviour);
+                                    planeAreaBehaviour.ToggleAreaView();
                                 }
                         }
 

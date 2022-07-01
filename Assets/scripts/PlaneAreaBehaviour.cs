@@ -9,21 +9,31 @@ using UnityEngine.UI;
 
 public class PlaneAreaBehaviour : MonoBehaviour
 {
-    
     public ARPlane arPlane;
+    public TextMeshPro BucketNumberMeshPro;
     public   float area ;
     public Text txt;
-     public TextMeshPro BucketNumberMeshPro;
     // Start is called before the first frame update
+    // List<PlaneAreaBehaviour> planeAreaBehaviour = new List<PlaneAreaBehaviour>();
+
     void Update()
     {
         BucketNumberMeshPro.transform.rotation = Quaternion.LookRotation(BucketNumberMeshPro.transform.position -  Camera.main.transform.position);
-        // textField.text = CalculatePlaneArea(arPlane).ToString();
-        
     }
     void Start()
     {
+        
         arPlane.boundaryChanged += ArPlane_BoundaryChanged;
+    }
+
+    private void ArPlane_BoundaryChanged(ARPlaneBoundaryChangedEventArgs obj)
+    {
+      
+          area = CalculatePlaneArea(arPlane);
+        BucketNumberMeshPro.text = area.ToString();
+         txt.text = area.ToString();
+         
+        
     }
     
     private float CalculatePlaneArea(ARPlane plane)  
@@ -38,15 +48,7 @@ public class PlaneAreaBehaviour : MonoBehaviour
         txt.text = area.ToString();
     }
 
-    private void ArPlane_BoundaryChanged(ARPlaneBoundaryChangedEventArgs obj)
-    {
-
-        area = CalculatePlaneArea(arPlane);
-        
-        BucketNumberMeshPro.text = area.ToString();
-         txt.text = area.ToString();
-        
-    }
+   
     // Update is called once per frame
     
     public void ToggleAreaView()

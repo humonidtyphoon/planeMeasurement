@@ -186,9 +186,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arPlane: {fileID: 7321181707026415940}
+  BucketNumberMeshPro: {fileID: 684729597989161644}
   area: 0
   txt: {fileID: 0}
-  BucketNumberMeshPro: {fileID: 684729597989161644}
 --- !u!1 &7321181707026415806
 GameObject:
   m_ObjectHideFlags: 0
@@ -432,6 +432,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arPlane: {fileID: 7321181707026415940}
+  BucketNumberMeshPro: {fileID: 684729597989161644}
   area: 0
   txt: {fileID: 0}
-  BucketNumberMeshPro: {fileID: 684729597989161644}
